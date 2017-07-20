@@ -15,13 +15,12 @@
 	const tootCount = String(Number(COUNT_AREA.innerText) + 1);
 	COUNT_AREA.innerText = tootCount;
 
-    // display_name without toot count.
-    const BASE_NAME = myDisplayName.replace(/(?:\[[0-9]+\])+$/, "");
-    let suffixCount = "[" + tootCount.toString() + "]";
-    
+	// display_name without toot count.
+	const BASE_NAME = myDisplayName.replace(/(?:\[[0-9]+\])+$/, "");
+	let suffixCount = "[" + tootCount.toString() + "]";
 
 
-    function update_display_name(name) {
+	function update_display_name(name) {
 		let xhr = new XMLHttpRequest();
 
 		xhr.open("PATCH", UPDATE_CRED);
@@ -34,6 +33,6 @@
 		xhr.send(patch);
 	}
 
-    myDisplayName = BASE_NAME + suffixCount;
+	myDisplayName = BASE_NAME + suffixCount;
 	update_display_name(myDisplayName);
 })();
