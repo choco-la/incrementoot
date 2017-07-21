@@ -2,7 +2,8 @@
 	"manifest_version": 2,
 	"name": "incrementoot",
 	"description": "Update display name at tooting",
-	"version": "1.1",
+	"version": "1.1.1",
+	"homepage_url": "https://github.com/choco-la/incrementoot",
 	"icons": {
 		"48": "icons/icon48.png",
 		"96": "icons/icon96.png",
@@ -10,7 +11,8 @@
 	},
 	"applications": {
 		"gecko": {
-			"id": "incrementoot@example.com"
+			"id": "incrementoot@example.com",
+			"update_url": "https://choco-la.github.io/incrementoot/update.json"
 		}
 	},
 	"permissions": [
