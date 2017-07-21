@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "incrementoot",
 	"description": "Update display name at tooting",
-	"version": "1.0",
+	"version": "1.1",
 	"icons": {
 		"48": "icons/icon48.png",
 		"96": "icons/icon96.png",

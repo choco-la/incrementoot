@@ -22,6 +22,7 @@
 	document.body.appendChild(COUNT_AREA);
 
  	function update_display_name(name) {
+		console.log("update name");
 		let xhr = new XMLHttpRequest();
 
 		xhr.open("PATCH", UPDATE_CRED);
