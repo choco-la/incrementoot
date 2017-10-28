@@ -1,38 +1,38 @@
 (function() {
-	"use strict";
-	const INIT_STATE = JSON.parse(document.getElementById("initial-state").textContent);
-	const BEARER_TOKEN = INIT_STATE.meta["access_token"];
-	const MY_NUM_ID = INIT_STATE.meta["me"];
-	const INSTANCE_NUM = INIT_STATE.meta["admin"];
+  'use strict'
+  const initState = JSON.parse(document.getElementById('initial-state').textContent)
+  const bearerToken = initState.meta['access_token']
+  const myNumId = initState.meta['me']
 
 
-	let myDisplayName = INIT_STATE.accounts[MY_NUM_ID]["display_name"];
-
-	const MSTDN_HOST = location.origin + "/";
-	const UPDATE_CRED = MSTDN_HOST + "api/v1/accounts/update_credentials";
-
-	const COUNT_AREA = document.getElementsByClassName("toot-count")[0];
-	const tootCount = String(Number(COUNT_AREA.innerText) + 1);
-	COUNT_AREA.innerText = tootCount;
-
-	// display_name without toot count.
-	const BASE_NAME = myDisplayName.replace(/(?:\[[0-9]+\])+$/, "");
-	let suffixCount = "[" + tootCount.toString() + "]";
+  const tootCount = String(Number(countArea.innerText) + 1)
+  const displayName = initState.accounts[myNumId]['display_name']
+  // display_name without toot count.
+  const base = displayName.replace(/(?:\[[0-9]+\])+$/, '')
+  const suffixCount = '[' + tootCount.toString() + ']'
 
 
-	function update_display_name(name) {
-		let xhr = new XMLHttpRequest();
+  const countArea = document.getElementsByClassName('toot-count')[0]
+  countArea.innerText = tootCount
 
-		xhr.open("PATCH", UPDATE_CRED);
-		xhr.setRequestHeader("Authorization", "Bearer " + BEARER_TOKEN);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.timeout = "3000";
 
-		const patch = "display_name=" + encodeURIComponent(name).replace(/%20/, "+");
 
-		xhr.send(patch);
-	}
 
-	myDisplayName = BASE_NAME + suffixCount;
-	update_display_name(myDisplayName);
-})();
+
+  const update_display_name = (name, token) => {
+    const host = location.origin + '/'
+    const update = host + 'api/v1/accounts/update_credentials'
+
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('PATCH', update)
+    xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    xhr.timeout = '3000'
+
+    const patch = 'display_name=' + encodeURIComponent(name).replace(/%20/, '+')
+    xhr.send(patch)
+  }
+
+  update_display_name(base + suffixCount, bearerToken)
+})()

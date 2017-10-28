@@ -1,22 +1,30 @@
 (function() {
-	"use strict";
+  'use strict'
+  const updateNameJs = '/update_name.js'
 
-	const MSTDN_HOST = "https://friends.nico/";
-	const POST_STATUS = MSTDN_HOST + "api/v1/statuses";
-	const REBLOG_STATUS = MSTDN_HOST + "api/v1/statuses/*/reblog";
 
-	const UPDATE_NAME_JS_PATH = "/update_name.js";
+  const instances = [
+    'https://mstdn.jp/',
+    'https://pawoo.net/',
+    'https://friends.nico/'
+  ]
+  const listenUrls = []
+  for (const instance of instances) {
+    listenUrls.push(instance + 'api/v1/statuses')
+    listenUrls.push(instance + 'api/v1/statuses/*/reblog')
+  }
 
-	function listen_toot(event) {
-		console.log("onComplete detected");
-		if (event.method == "POST") {
-			console.log("exec " + UPDATE_NAME_JS_PATH);
-			chrome.tabs.executeScript({file: UPDATE_NAME_JS_PATH});
-		}
-	}
 
-	chrome.webRequest.onCompleted.addListener(
-		listen_toot,
-		{urls: [POST_STATUS, REBLOG_STATUS]}
-	);
-})();
+  const listen_toot = (event) => {
+    console.log('onComplete detected')
+    if (event.method === 'POST') {
+      console.log('exec ' + updateNameJs)
+      chrome.tabs.executeScript({file: updateNameJs})
+    }
+  }
+
+  chrome.webRequest.onCompleted.addListener(
+    listen_toot,
+    {urls: listenUrls}
+  )
+})()
