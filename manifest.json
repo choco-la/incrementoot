@@ -11,12 +11,14 @@
   },
   "applications": {
     "gecko": {
+      "strict_min_version": "57.0a1",
       "id": "incrementoot@example.com",
       "update_url": "https://choco-la.github.io/incrementoot/update.json"
     }
   },
   "permissions": [
     "webRequest",
+    "webRequestBlocking",
     "tabs",
     "https://friends.nico/web/*",
     "https://pawoo.net/web/*",
