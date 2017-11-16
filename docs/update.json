@@ -11,6 +11,11 @@
 					"version": "2.0",
 					"update_link": "https://github.com/choco-la/incrementoot/releases/download/2.0/incrementoot-2.0-an.fx.xpi",
 					"update_hash": "sha256:4f705ed2116d85e61ece1a7ef83acf02a7344d3b98b42c0503300e34b2813379"
+				},
+				{
+					"version": "2.0.1",
+					"update_link": "https://github.com/choco-la/incrementoot/releases/download/2.0.1/incrementoot-2.0.1-an.fx.xpi",
+					"update_hash": "sha256:291cdeb6ef1260fb67842ce5b2929ad634bb09343dc1e6a2fac2e6784c886eaf"
 				}
 			]
 		}

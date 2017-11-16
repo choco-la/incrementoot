@@ -8,7 +8,7 @@
   const listenUrls = []
   for (const instance of instances) {
     listenUrls.push(instance + 'api/v1/statuses')
-    listenUrls.push(instance + 'api/v1/statuses/*/reblog')
+    // listenUrls.push(instance + 'api/v1/statuses/*/reblog')
   }
 
 
@@ -52,7 +52,7 @@
         const name = base + '[' + String(count) + ']'
 
         filter.write(event.data)
-        filter.close();
+        filter.close()
 
         update_display_name(name, bearer_token)
       }
